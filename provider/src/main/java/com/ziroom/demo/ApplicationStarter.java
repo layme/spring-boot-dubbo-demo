@@ -1,9 +1,11 @@
 package com.ziroom.demo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * <p></p>
@@ -21,6 +23,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @Slf4j
 @SpringBootApplication
+@MapperScan(basePackages = "com.ziroom.demo.mapper")
+@EnableTransactionManagement
 public class ApplicationStarter {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(ApplicationStarter.class, args);

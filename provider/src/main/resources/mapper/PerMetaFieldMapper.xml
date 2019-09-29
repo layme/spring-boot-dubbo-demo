@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziroom.demo.mapper.PerMetaFieldMapper">
+  <resultMap id="BaseResultMap" type="com.ziroom.demo.entity.PerMetaFieldEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fid" jdbcType="VARCHAR" property="fid" />
+    <result column="field_key" jdbcType="VARCHAR" property="fieldKey" />
+    <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="field_type" jdbcType="TINYINT" property="fieldType" />
+    <result column="value_type" jdbcType="TINYINT" property="valueType" />
+    <result column="enum_type" jdbcType="TINYINT" property="enumType" />
+    <result column="meta_type" jdbcType="TINYINT" property="metaType" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_by" jdbcType="VARCHAR" property="lastModifyBy" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fid, field_key, field_name, field_type, value_type, enum_type, meta_type, sort, 
+    is_del, create_by, create_time, last_modify_by, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_per_meta_field
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_per_meta_field
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ziroom.demo.entity.PerMetaFieldEntity">
+    insert into t_per_meta_field (id, fid, field_key, 
+      field_name, field_type, value_type, 
+      enum_type, meta_type, sort, 
+      is_del, create_by, create_time, 
+      last_modify_by, last_modify_time)
+    values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=VARCHAR}, #{fieldKey,jdbcType=VARCHAR}, 
+      #{fieldName,jdbcType=VARCHAR}, #{fieldType,jdbcType=TINYINT}, #{valueType,jdbcType=TINYINT}, 
+      #{enumType,jdbcType=TINYINT}, #{metaType,jdbcType=TINYINT}, #{sort,jdbcType=INTEGER}, 
+      #{isDel,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastModifyBy,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ziroom.demo.entity.PerMetaFieldEntity">
+    insert into t_per_meta_field
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="fieldKey != null">
+        field_key,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="fieldType != null">
+        field_type,
+      </if>
+      <if test="valueType != null">
+        value_type,
+      </if>
+      <if test="enumType != null">
+        enum_type,
+      </if>
+      <if test="metaType != null">
+        meta_type,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyBy != null">
+        last_modify_by,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldKey != null">
+        #{fieldKey,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null">
+        #{fieldType,jdbcType=TINYINT},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=TINYINT},
+      </if>
+      <if test="enumType != null">
+        #{enumType,jdbcType=TINYINT},
+      </if>
+      <if test="metaType != null">
+        #{metaType,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyBy != null">
+        #{lastModifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziroom.demo.entity.PerMetaFieldEntity">
+    update t_per_meta_field
+    <set>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldKey != null">
+        field_key = #{fieldKey,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null">
+        field_type = #{fieldType,jdbcType=TINYINT},
+      </if>
+      <if test="valueType != null">
+        value_type = #{valueType,jdbcType=TINYINT},
+      </if>
+      <if test="enumType != null">
+        enum_type = #{enumType,jdbcType=TINYINT},
+      </if>
+      <if test="metaType != null">
+        meta_type = #{metaType,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyBy != null">
+        last_modify_by = #{lastModifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ziroom.demo.entity.PerMetaFieldEntity">
+    update t_per_meta_field
+    set fid = #{fid,jdbcType=VARCHAR},
+      field_key = #{fieldKey,jdbcType=VARCHAR},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      field_type = #{fieldType,jdbcType=TINYINT},
+      value_type = #{valueType,jdbcType=TINYINT},
+      enum_type = #{enumType,jdbcType=TINYINT},
+      meta_type = #{metaType,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_by = #{lastModifyBy,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultType="com.ziroom.demo.dto.MetaFieldDto">
+    select
+    fid,
+    field_key fieldKey,
+    field_name fieldName
+    from t_per_meta_field
+  </select>
+</mapper>

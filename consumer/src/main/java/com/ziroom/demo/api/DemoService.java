@@ -1,5 +1,9 @@
 package com.ziroom.demo.api;
 
+import com.ziroom.demo.dto.MetaFieldDto;
+
+import java.util.List;
+
 /**
  * <p></p>
  * <p>
@@ -21,4 +25,10 @@ public interface DemoService {
      * @return
      */
     String sayHello(String name);
+
+    List<MetaFieldDto> selectAll();
+
+    List<MetaFieldDto> selectAllFromMaster();
+
+    List<MetaFieldDto> selectAllFromSlave();
 }
