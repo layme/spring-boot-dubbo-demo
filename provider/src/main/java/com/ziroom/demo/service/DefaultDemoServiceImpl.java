@@ -1,9 +1,12 @@
 package com.ziroom.demo.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ziroom.demo.api.DemoService;
 import com.ziroom.demo.configuration.datasource.Master;
 import com.ziroom.demo.configuration.datasource.Slave;
 import com.ziroom.demo.dto.MetaFieldDto;
+import com.ziroom.demo.dto.PageResultDto;
 import com.ziroom.demo.mapper.PerMetaFieldMapper;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +59,17 @@ public class DefaultDemoServiceImpl implements DemoService {
     @Override
     public List<MetaFieldDto> selectAllFromSlave() {
         return perMetaFieldMapper.selectAll();
+    }
+
+    @Override
+    public PageResultDto<MetaFieldDto> selectByPage(Integer page, Integer limit) {
+        // 分页设置
+        PageHelper.startPage(page, limit);
+        List<MetaFieldDto> list = perMetaFieldMapper.selectAll();
+
+        // 获取分页结果
+        PageInfo<MetaFieldDto> pageInfo = new PageInfo<>(list);
+
+        return PageResultDto.<MetaFieldDto>builder().rows(pageInfo.getList()).total(pageInfo.getTotal()).build();
     }
 }

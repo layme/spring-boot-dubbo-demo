@@ -1,6 +1,7 @@
 package com.ziroom.demo.api;
 
 import com.ziroom.demo.dto.MetaFieldDto;
+import com.ziroom.demo.dto.PageResultDto;
 
 import java.util.List;
 
@@ -31,4 +32,6 @@ public interface DemoService {
     List<MetaFieldDto> selectAllFromMaster();
 
     List<MetaFieldDto> selectAllFromSlave();
+
+    PageResultDto<MetaFieldDto> selectByPage(Integer page, Integer limit);
 }
