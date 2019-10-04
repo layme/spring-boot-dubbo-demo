@@ -1,10 +1,8 @@
 package com.ziroom.demo;
 
-import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -21,16 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @date Created in 2019年09月26日 15:05
  * @since 1.0
  */
-@Slf4j
 @SpringBootApplication
 @MapperScan(basePackages = "com.ziroom.demo.mapper")
 @EnableTransactionManagement
 public class ApplicationStarter {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(ApplicationStarter.class, args);
-        String[] activeProfiles = context.getEnvironment().getActiveProfiles();
-        for (String profile : activeProfiles) {
-            log.info("current profile: {}", profile);
-        }
+        SpringApplication.run(ApplicationStarter.class, args);
     }
 }
